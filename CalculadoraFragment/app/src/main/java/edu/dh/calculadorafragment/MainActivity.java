@@ -9,15 +9,23 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+CalculadoraFragment calculadoraFragment = new CalculadoraFragment();
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		FragmentTransaction objeto = getSupportFragmentManager().beginTransaction();
+		objeto.add(R.id.flNumero, calculadoraFragment);
+		objeto.commit();
+
 	}
 
 	public void inserirNumero(View view) {
+	Button objbutton = (Button) view;
+		calculadoraFragment.inserirTexto(objbutton.getText().toString());
 
 	}
 
